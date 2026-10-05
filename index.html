@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@600;700&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./style.css">
+  <title>Piedra, Papel, Tijera, Lagarto, Spock | Frontend Mentor</title>
+</head>
+<body>
+  <canvas class="bg" id="bg" aria-hidden="true"></canvas>
+  <div class="spikes spikes--top" aria-hidden="true"></div>
+  <div class="spikes spikes--bottom" aria-hidden="true"></div>
+
+  <div class="app">
+    <header class="header">
+      <h1 class="logo" aria-label="Piedra, Papel, Tijera, Lagarto, Spock">
+        <span class="logo__word" aria-hidden="true">Piedra</span>
+        <span class="logo__word" aria-hidden="true">Papel</span>
+        <span class="logo__word" aria-hidden="true">Tijera</span>
+        <span class="logo__word" aria-hidden="true">Lagarto</span>
+        <span class="logo__word" aria-hidden="true">Spock</span>
+      </h1>
+      <div class="score">
+        <span class="score__label">Puntos</span>
+        <span class="score__value" id="score">0</span>
+      </div>
+    </header>
+
+    <main class="stage">
+      <!-- Paso 1: elegir -->
+      <section class="board" id="board" aria-labelledby="board-title">
+        <h2 class="visually-hidden" id="board-title">Elegí tu jugada</h2>
+        <div class="board__pentagon" aria-hidden="true"></div>
+        <button class="chip chip--scissors board__chip board__chip--scissors" data-choice="scissors" aria-label="Tijera">
+          <span class="chip__inner"><span class="icon"></span></span>
+        </button>
+        <button class="chip chip--paper board__chip board__chip--paper" data-choice="paper" aria-label="Papel">
+          <span class="chip__inner"><span class="icon"></span></span>
+        </button>
+        <button class="chip chip--rock board__chip board__chip--rock" data-choice="rock" aria-label="Piedra">
+          <span class="chip__inner"><span class="icon"></span></span>
+        </button>
+        <button class="chip chip--lizard board__chip board__chip--lizard" data-choice="lizard" aria-label="Lagarto">
+          <span class="chip__inner"><span class="icon"></span></span>
+        </button>
+        <button class="chip chip--spock board__chip board__chip--spock" data-choice="spock" aria-label="Spock">
+          <span class="chip__inner"><span class="icon"></span></span>
+        </button>
+      </section>
+
+      <!-- Paso 2-4: resultado -->
+      <section class="result" id="result" hidden aria-labelledby="result-title">
+        <h2 class="visually-hidden" id="result-title">Resultado de la ronda</h2>
+        <div class="result__side result__side--player">
+          <h3 class="result__label">Elegiste</h3>
+          <div class="result__slot" id="player-slot"></div>
+        </div>
+        <div class="result__verdict" id="verdict" role="status" aria-live="polite">
+          <p class="result__text" id="verdict-text"></p>
+          <button class="btn-again" id="again" type="button">Jugar de nuevo</button>
+        </div>
+        <div class="result__side result__side--house">
+          <h3 class="result__label">La casa eligió</h3>
+          <div class="result__slot" id="house-slot"></div>
+        </div>
+      </section>
+    </main>
+
+    <button class="btn-rules" id="open-rules" type="button">Reglas</button>
+
+    <footer class="attribution">
+      <p>
+        Desafío de <a href="https://www.frontendmentor.io?ref=challenge">Frontend Mentor</a>.
+        Hecho por <a href="#">Gaspar</a>.
+      </p>
+      <button class="motion-toggle" id="motion-toggle" type="button" aria-pressed="true">Animaciones: sí</button>
+    </footer>
+  </div>
+
+  <!-- Popup del resultado -->
+  <dialog class="popup" id="popup" aria-labelledby="popup-title">
+    <div class="popup__confetti" id="popup-confetti" aria-hidden="true"></div>
+    <div class="popup__box">
+      <div class="popup__chips" id="popup-chips"></div>
+      <h2 class="popup__title" id="popup-title"></h2>
+      <p class="popup__detail" id="popup-detail"></p>
+      <p class="popup__points" id="popup-points"></p>
+      <button class="popup__btn" id="popup-again" type="button">Jugar de nuevo</button>
+      <button class="popup__close" id="popup-close" type="button">Ver la mesa</button>
+    </div>
+  </dialog>
+
+  <!-- Modal de reglas -->
+  <dialog class="rules" id="rules" aria-labelledby="rules-title">
+    <div class="rules__box">
+      <h2 class="rules__title" id="rules-title">Reglas</h2>
+      <button class="rules__close" id="close-rules" type="button" aria-label="Cerrar reglas">
+        <img src="./images/icon-close.svg" alt="">
+      </button>
+      <div class="rules__panel">
+        <img class="rules__img" src="./images/image-rules-bonus.svg" alt="La tijera vence al papel y al lagarto. El papel vence a la piedra y a Spock. La piedra vence al lagarto y a la tijera. El lagarto vence a Spock y al papel. Spock vence a la tijera y a la piedra.">
+      </div>
+    </div>
+  </dialog>
+
+  <script src="./script.js"></script>
+</body>
+</html>
